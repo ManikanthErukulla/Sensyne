@@ -1,0 +1,779 @@
+{
+	"info": {
+		"_postman_id": "dbff24ea-e12e-4db4-8bc1-5645b7be2b0d",
+		"name": "SensyneHealth_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add new product",
+			"item": [
+				{
+					"name": "Add a product with 0 prefix to price",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8d47c4f-74e0-426f-b9ac-160c52d68f8b",
+								"exec": [
+									"pm.test(\"Price value with zero prefix\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Zero prefix to price\",\n  \"price\": 04.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a product with negative price - Negative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cfc95005-d457-4da1-b8d6-6e0107e66979",
+								"exec": [
+									"pm.test(\"Price value with negative number\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Negative case\",\n  \"price\": -4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a product with string value at price field - Negative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cfc95005-d457-4da1-b8d6-6e0107e66979",
+								"exec": [
+									"pm.test(\"Price value as string\", function() {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Negative case\",\n  \"price\": \"679\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a product - with ten 9s in the price",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1034a5d8-4568-41e6-a92e-8b15b8a3c5d1",
+								"exec": [
+									"pm.test(\"Price value with ten 9s\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Ten 9s\",\n  \"price\": 9999999999.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a product - with 16 9s in the price",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e6299eb-61dc-4718-a063-4953e1f4ef6e",
+								"exec": [
+									"pm.test(\"Price value with 16 9s\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Sixteen 9s\",\n  \"price\": 9999999999999999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a product - Positive",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c2a8151-583e-4a76-aa87-aa8568075633",
+								"exec": [
+									"pm.test(\"Price value with regular price - positive scenario\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Amazing mattress\",\n  \"price\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a product - Name value with special chars",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c2a8151-583e-4a76-aa87-aa8568075633",
+								"exec": [
+									"pm.test(\"Name value with speical chars\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"------Its true!!!!+++++But it works.......****@@@@ELSE------()$£\",\n  \"price\": 499\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Get all Products info",
+			"item": [
+				{
+					"name": "Get all the products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2fef5169-ace3-4954-ab28-bc909d304875",
+								"exec": [
+									"pm.test(\"Get all the product details\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"var new_product_id;",
+									"if(jsonData[jsonData.length-1].name == \"Amazing mattress\")",
+									"    new_product_id = jsonData[jsonData.length-1].id;",
+									"    ",
+									"    pm.environment.set('product_id' , new_product_id);",
+									"",
+									"for(i=0;i<jsonData.length;i++)",
+									"{",
+									"    if (jsonData[i].name == \"Amazing mattress\")",
+									"        pm.environment.set('product_id' , jsonData[i].id)",
+									"    else if(jsonData[i].name == \"Sixteen 9s\")",
+									"        pm.environment.set('product_id_16_9s' , jsonData[i].id)",
+									"    else if(jsonData[i].name == \"Ten 9s\")",
+									"        pm.environment.set('product_id_10_9s' , jsonData[i].id)",
+									"}",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/products",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Get Product info",
+			"item": [
+				{
+					"name": "Get product data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34944786-5218-4911-bb85-45da884d1284",
+								"exec": [
+									"pm.test(\"Validate the positive scenario's post \", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"Name to be equal to Amazing mattress\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Amazing mattress\");",
+									"});",
+									"",
+									"pm.test(\"Validate price\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(\"4.00\").to.eql(jsonData.price);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product data - 16 9s",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b64108d3-a690-4b9c-8e4c-1eb229dc34f4",
+								"exec": [
+									"pm.test(\"Validate sixteen 9s post\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"Name to be equal to Sixteen 9s\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Sixteen 9s\");",
+									"});",
+									"",
+									"pm.test(\"Validate price to be equal to 9999999999999999.00\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(\"9999999999999999.00\").to.eql(jsonData.price);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id_16_9s}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id_16_9s}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product data - 10 9s",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bba8f33a-f665-435e-9219-9266278ba049",
+								"exec": [
+									"pm.test(\"Validate ten 9s post\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"Name to be equal to 10 9s\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Ten 9s\");",
+									"});",
+									"",
+									"pm.test(\"Validate price to be equal to 9999999999.00\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(\"9999999999.00\").to.eql(jsonData.price);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id_10_9s}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id_10_9s}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Update product details",
+			"item": [
+				{
+					"name": "Name update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4e9dcf4c-a7e2-417e-819a-b04827821a77",
+								"exec": [
+									"pm.test(\"Test to amend the name\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Zing Zing\",\n  \"price\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Price update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f361d98d-8651-4aaf-89a0-4244213af77a",
+								"exec": [
+									"pm.test(\"Test to amend the price by giving 4 decimal places\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Zing Zing\",\n  \"price\": 49.2999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Delete Product",
+			"item": [
+				{
+					"name": "Delete 10 9s product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c50b3ac3-9e38-49c4-b22d-ffc395556916",
+								"exec": [
+									"pm.test(\"Delete product with 10 9s\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id_10_9s}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id_10_9s}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete 16 9s product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e494cf18-5e46-4774-b04d-fa4b8c59b259",
+								"exec": [
+									"pm.test(\"Delete product with 16 9s\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id_16_9s}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id_16_9s}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Positive scenario's product - Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aea10c3b-0800-4c3d-aa90-72def86f8518",
+								"exec": [
+									"pm.test(\"Delete product - positive scenario\", function() {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/product/{{product_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"product",
+								"{{product_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6fd5227e-95e3-4d0e-9ea5-2d732dcea266",
+				"type": "text/javascript",
+				"exec": [
+					"pm.environment.set('baseURL' , 'http://localhost:5000/v1')"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3eb145f7-f8c4-4886-960c-87f3a32dda01",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
